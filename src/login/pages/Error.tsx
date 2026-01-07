@@ -42,7 +42,7 @@ export default function Error(props: PageProps<Extract<KcContext, { pageId: "err
                             </div>
                             <div>
                                 <p className="font-medium text-slate-800">{msg("backToApplication")}</p>
-                                <p className="text-sm text-slate-500">Kembali ke aplikasi</p>
+                                
                             </div>
                         </div>
                         <ArrowLeft size={20} className="text-slate-400 group-hover:text-slate-600 group-hover:-translate-x-1 transition-all" />

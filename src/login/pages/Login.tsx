@@ -54,7 +54,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                 </div>
                                 <div className="relative flex justify-center text-sm">
                                     <span className="bg-white px-4 text-slate-500">
-                                        Atau masuk dengan
+                                        {msg("identity-provider-login-label")}
                                     </span>
                                 </div>
                             </div>
@@ -195,9 +195,8 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                     name="login"
                                     id="kc-login"
                                     type="submit"
-                                    size="lg"
                                 >
-                                    Masuk
+                                    {msg("doLogIn")}
                                 </Button>
                             </div>
                         </form>

@@ -70,7 +70,7 @@ export default function Info(props: PageProps<Extract<KcContext, { pageId: "info
                                     </div>
                                     <div>
                                         <p className="font-medium text-slate-800">{msg("backToApplication")}</p>
-                                        <p className="text-sm text-slate-500">Kembali ke aplikasi</p>
+                                        
                                     </div>
                                 </div>
                                 <ArrowRight size={20} className="text-slate-400 group-hover:text-emerald-600 group-hover:translate-x-1 transition-all" />
@@ -89,7 +89,7 @@ export default function Info(props: PageProps<Extract<KcContext, { pageId: "info
                                     </div>
                                     <div>
                                         <p className="font-medium text-slate-800">{msg("proceedWithAction")}</p>
-                                        <p className="text-sm text-slate-500">Lanjutkan proses</p>
+                                        
                                     </div>
                                 </div>
                                 <ArrowRight size={20} className="text-slate-400 group-hover:text-emerald-600 group-hover:translate-x-1 transition-all" />
@@ -109,7 +109,7 @@ export default function Info(props: PageProps<Extract<KcContext, { pageId: "info
                                     </div>
                                     <div>
                                         <p className="font-medium text-slate-800">{msg("backToApplication")}</p>
-                                        <p className="text-sm text-slate-500">Kembali ke aplikasi</p>
+                                        
                                     </div>
                                 </div>
                                 <ArrowRight size={20} className="text-slate-400 group-hover:text-emerald-600 group-hover:translate-x-1 transition-all" />
