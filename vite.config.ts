@@ -9,5 +9,10 @@ export default defineConfig({
         keycloakify({
             accountThemeImplementation: "none"
         })
-    ]
+    ],
+    resolve: {
+        alias: {
+            "@": "/src"
+        }
+    }
 });
