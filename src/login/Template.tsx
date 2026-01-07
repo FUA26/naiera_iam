@@ -7,6 +7,7 @@ import { useSetClassName } from "keycloakify/tools/useSetClassName";
 import { useInitialize } from "keycloakify/login/Template.useInitialize";
 import type { I18n } from "./i18n";
 import type { KcContext } from "./KcContext";
+import logoPngUrl from "./assets/img/naiera.png";
 
 export default function Template(props: TemplateProps<KcContext, I18n>) {
     const {
@@ -61,7 +62,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                     <div className="mb-8">
                         <a href="/" className="group mb-6 inline-flex items-center gap-3">
                             <img 
-                                src={`${url.resourcesCommonPath}/img/naiera.png`}
+                                src={logoPngUrl}
                                 alt="Naiera Logo" 
                                 className="h-12 w-12 rounded-xl object-cover"
                             />
