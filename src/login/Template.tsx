@@ -26,7 +26,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 
     const { kcClsx } = getKcClsx({ doUseDefaultCss, classes });
 
-    const { msg, msgStr, currentLanguage, enabledLanguages } = i18n;
+    const { msg, msgStr } = i18n;
 
     const { realm, auth, url, message, isAppInitiatedAction } = kcContext;
 
@@ -60,9 +60,11 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                     {/* Logo & Title */}
                     <div className="mb-8">
                         <a href="/" className="group mb-6 inline-flex items-center gap-3">
-                            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-600">
-                                <span className="text-xl font-bold text-white">N</span>
-                            </div>
+                            <img 
+                                src={`${url.resourcesCommonPath}/img/naiera.png`}
+                                alt="Naiera Logo" 
+                                className="h-12 w-12 rounded-xl object-cover"
+                            />
                             <div>
                                 <h1 className="text-xl font-bold text-slate-800 transition-colors group-hover:text-emerald-600">Super App Naiera</h1>
                                 <p className="text-sm text-slate-500">Kabupaten Naiera</p>
