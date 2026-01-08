@@ -53,7 +53,8 @@
         "jszip": "^3.10.1",
         "p-debounce": "^4.0.0",
         "reactflow": "^11.11.4",
-        "use-react-router-breadcrumbs": "^4.0.1"
+        "use-react-router-breadcrumbs": "^4.0.1",
+        "@keycloakify/email-native": "~260007.0.0"
     },
     "devDependencies": {
         "@eslint/js": "^9.15.0",
