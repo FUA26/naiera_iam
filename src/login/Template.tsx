@@ -60,17 +60,24 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                 <div className="w-full max-w-md">
                     {/* Logo & Title */}
                     <div className="mb-8">
-                        <a href="/" className="group mb-6 inline-flex items-center gap-3">
+                        <a href="https://naiera.bumigirindhra.my.id" className="mb-4 flex items-center gap-1 text-sm font-medium text-emerald-600 transition-colors hover:text-emerald-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-left h-4 w-4" aria-hidden="true">
+                                <path d="m12 19-7-7 7-7"></path>
+                                <path d="M19 12H5"></path>
+                            </svg>
+                            <span>Kembali ke Beranda</span>
+                        </a>
+                        <div className="mb-6 inline-flex items-center gap-3">
                             <img 
                                 src={logoPngUrl}
                                 alt="Naiera Logo" 
                                 className="h-12 w-12 rounded-xl object-cover"
                             />
                             <div>
-                                <h1 className="text-xl font-bold text-slate-800 transition-colors group-hover:text-emerald-600">Super App Naiera</h1>
+                                <h1 className="text-xl font-bold text-slate-800">Super App Naiera</h1>
                                 <p className="text-sm text-slate-500">Kabupaten Naiera</p>
                             </div>
-                        </a>
+                        </div>
 
                         {/* Dynamic Header from Keycloak or Fallback */}
                         <h2 className="mb-2 text-3xl font-bold text-slate-800">{headerNode}</h2>

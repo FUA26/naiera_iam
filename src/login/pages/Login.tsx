@@ -14,7 +14,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
 
     const { social, realm, url, usernameHidden, login, auth, registrationDisabled, messagesPerField } = kcContext;
 
-    const { msg } = i18n;
+    const { msg, msgStr } = i18n;
 
     const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false);
 
@@ -116,7 +116,13 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                         autoFocus
                                         autoComplete="username"
                                         aria-invalid={messagesPerField.existsError("username", "password")}
-                                        placeholder="Masukkan email atau NIK"
+                                        placeholder={
+                                            !realm.loginWithEmailAllowed
+                                                ? msgStr("username")
+                                                : !realm.registrationEmailAsUsername
+                                                  ? msgStr("usernameOrEmail")
+                                                  : msgStr("email")
+                                        }
                                         icon={<Mail size={18} />}
                                     />
                                     {messagesPerField.existsError("username", "password") && (
@@ -142,7 +148,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                     name="password"
                                     autoComplete="current-password"
                                     aria-invalid={messagesPerField.existsError("username", "password")}
-                                    placeholder="Masukkan password"
+                                    placeholder={msgStr("password")}
                                     icon={<Lock size={18} />}
                                 />
                                 {usernameHidden && messagesPerField.existsError("username", "password") && (

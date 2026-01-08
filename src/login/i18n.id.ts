@@ -346,7 +346,7 @@ const messages: Record<MessageKey_defaultSet, string> = {
     alreadyLoggedIn: "Anda sudah login.",
     differentUserAuthenticated: "Anda sudah terautentikasi sebagai pengguna berbeda '{0}' dalam sesi ini. Silakan keluar terlebih dahulu.",
     brokerLinkingSessionExpired: "Meminta penautan akun broker, tetapi sesi saat ini tidak lagi valid.",
-    proceedWithAction: "→ Klik di sini untuk melanjutkan",
+    proceedWithAction: "Klik di sini untuk melanjutkan",
     acrNotFulfilled: "Persyaratan autentikasi tidak terpenuhi",
     "requiredAction.CONFIGURE_TOTP": "Konfigurasi OTP",
     "requiredAction.TERMS_AND_CONDITIONS": "Syarat dan Ketentuan",
