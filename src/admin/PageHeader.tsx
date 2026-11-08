@@ -11,7 +11,7 @@
 
 // @ts-nocheck
 
-import logoSvgUrl from "./assets/naiera.png";
+import logoSvgUrl from "./assets/siji.png";
 import { KeycloakMasthead, useEnvironment, useHelp } from "../shared/keycloak-ui-shared";
 import { DropdownItem, ToolbarItem } from "../shared/@patternfly/react-core";
 import { HelpIcon } from "../shared/@patternfly/react-icons";

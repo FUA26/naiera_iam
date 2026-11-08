@@ -31,35 +31,35 @@ export default function KcPage(props: { kcContext: KcContext }) {
                             <Login
                                 {...{ kcContext, i18n, classes }}
                                 Template={Template}
-                                doUseDefaultCss={true}
+                                doUseDefaultCss={false}
                             />
                         );
                     case "login-reset-password.ftl": return (
                         <LoginResetPassword
                             {...{ kcContext, i18n, classes }}
                             Template={Template}
-                            doUseDefaultCss={true}
+                            doUseDefaultCss={false}
                         />
                     );
                     case "login-update-password.ftl": return (
                         <LoginUpdatePassword
                             {...{ kcContext, i18n, classes }}
                             Template={Template}
-                            doUseDefaultCss={true}
+                            doUseDefaultCss={false}
                         />
                     );
                     case "error.ftl": return (
                         <Error
                             {...{ kcContext, i18n, classes }}
                             Template={Template}
-                            doUseDefaultCss={true}
+                            doUseDefaultCss={false}
                         />
                     );
                     case "info.ftl": return (
                         <Info
                             {...{ kcContext, i18n, classes }}
                             Template={Template}
-                            doUseDefaultCss={true}
+                            doUseDefaultCss={false}
                         />
                     );
                     default:

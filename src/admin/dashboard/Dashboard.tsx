@@ -9,7 +9,7 @@
 
 // @ts-nocheck
 
-import iconSvgUrl from "../assets/naiera.png";
+import iconSvgUrl from "../assets/siji.png";
 import FeatureRepresentation, {
     FeatureType
 } from "@keycloak/keycloak-admin-client/lib/defs/featureRepresentation";

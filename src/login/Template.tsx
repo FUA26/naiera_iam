@@ -7,7 +7,9 @@ import { useSetClassName } from "keycloakify/tools/useSetClassName";
 import { useInitialize } from "keycloakify/login/Template.useInitialize";
 import type { I18n } from "./i18n";
 import type { KcContext } from "./KcContext";
-import logoPngUrl from "./assets/img/naiera.png";
+import logoPngUrl from "./assets/img/siji.png";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, KeyRound, ShieldCheck, Zap } from "lucide-react";
 
 export default function Template(props: TemplateProps<KcContext, I18n>) {
     const {
@@ -26,13 +28,14 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
     } = props;
 
     const { kcClsx } = getKcClsx({ doUseDefaultCss, classes });
+    const { msg } = i18n;
+    const { auth, url, message, isAppInitiatedAction } = kcContext;
 
-    const { msg, msgStr } = i18n;
-
-    const { realm, auth, url, message, isAppInitiatedAction } = kcContext;
+    // Determine back URL: use client's base URL if available, otherwise login URL
+    const backUrl = (kcContext as any).client?.baseUrl || url.loginUrl;
 
     useEffect(() => {
-        document.title = documentTitle ?? msgStr("loginTitle", realm.displayName);
+        document.title = documentTitle ?? "SIJI - Single Identity Jaringan Integrasi | Pemkab Malang";
     }, []);
 
     useSetClassName({
@@ -48,65 +51,187 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
     const { isReadyToRender } = useInitialize({ kcContext, doUseDefaultCss });
 
     if (!isReadyToRender) {
-        return null;
+        return (
+            <div className="flex min-h-screen items-center justify-center bg-white">
+                <div className="flex flex-col items-center gap-4">
+                    <div className="size-10 animate-spin rounded-full border-[3px] border-red-100 border-t-red-600" />
+                    <p className="text-sm text-slate-400">Memuat...</p>
+                </div>
+            </div>
+        );
     }
 
     return (
-        <div className="w-full lg:grid lg:grid-cols-2 bg-white">
-            
+        <main className="relative min-h-screen w-full overflow-x-hidden md:overflow-hidden grid grid-cols-1 md:grid-cols-2 bg-white">
+            {/* Sisi Kiri: Hero & Feature List (Desktop) */}
+            <div className="relative hidden md:flex min-w-0 flex-col justify-between overflow-hidden border-r border-slate-200 bg-slate-50/60 p-8 md:w-full xl:p-12">
+                {/* Radial Dot Pattern Background */}
+                <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 opacity-[0.15]"
+                    style={{
+                        backgroundImage:
+                            "radial-gradient(circle at 50% 50%, #dc2626 1px, transparent 1px)",
+                        backgroundSize: "32px 32px"
+                    }}
+                />
 
-              {/* Kiri: Form login */}
-            <div className="mx-auto flex min-h-screen w-[350px] flex-col justify-center gap-y-6 py-12">
-                <div className="w-full max-w-md">
-                    {/* Logo & Title */}
-                    <div className="mb-8">
-                        <a href="https://naiera.bumigirindhra.my.id" className="mb-4 flex items-center gap-1 text-sm font-medium text-emerald-600 transition-colors hover:text-emerald-700">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-left h-4 w-4" aria-hidden="true">
-                                <path d="m12 19-7-7 7-7"></path>
-                                <path d="M19 12H5"></path>
-                            </svg>
-                            <span>Kembali ke Beranda</span>
-                        </a>
-                        <div className="mb-6 inline-flex items-center gap-3">
-                            <img 
-                                src={logoPngUrl}
-                                alt="Naiera Logo" 
-                                className="h-12 w-12 rounded-xl object-cover"
-                            />
+                {/* Header Brand */}
+                <div className="relative z-10 flex items-center gap-3">
+                    <img 
+                        src={logoPngUrl} 
+                        alt="Logo SIJI Pemkab Malang" 
+                        className="size-10 rounded-lg object-cover shadow-sm"
+                    />
+                    <div>
+                        <div className="flex items-center gap-2">
+                            <span className="text-xl font-bold tracking-tight text-slate-900 leading-none">
+                                SIJI
+                            </span>
+                            <span className="rounded bg-red-100 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-red-700">
+                                SSO
+                            </span>
+                        </div>
+                        <span className="text-xs font-medium text-slate-500 block mt-0.5">
+                            Single Identity Jaringan Integrasi
+                        </span>
+                    </div>
+                </div>
+
+                {/* Main Hero Content */}
+                <div className="relative z-10 mt-12 max-w-lg">
+                    <h1 className="max-w-xl text-3xl font-bold tracking-tight text-balance text-slate-900 md:text-4xl lg:text-5xl leading-tight">
+                        Satu Akun SSO.
+                        <br />
+                        <span className="text-red-600">Akses Seluruh Layanan.</span>
+                    </h1>
+                    <p className="mt-4 max-w-md text-sm leading-relaxed text-slate-600 md:text-base">
+                        Aplikasi Single Sign-On (SSO) resmi Pemerintah Kabupaten Malang untuk mengakses seluruh portal publik dan sistem pemerintahan terintegrasi.
+                    </p>
+
+                    <div className="mt-10 space-y-6">
+                        <div className="flex items-start gap-4">
+                            <div className="flex size-11 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white shadow-xs">
+                                <KeyRound className="size-5 text-red-600" />
+                            </div>
                             <div>
-                                <h1 className="text-xl font-bold text-slate-800">Super App Naiera</h1>
-                                <p className="text-sm text-slate-500">Kabupaten Naiera</p>
+                                <h3 className="mb-0.5 text-sm font-semibold text-slate-900">
+                                    Akses Terpadu Single Sign-On
+                                </h3>
+                                <p className="text-sm text-slate-500">
+                                    Cukup satu kali login untuk mengakses beragam portal layanan publik dan aplikasi internal Pemkab Malang.
+                                </p>
                             </div>
                         </div>
 
-                        {/* Dynamic Header from Keycloak or Fallback */}
-                        <h2 className="mb-2 text-3xl font-bold text-slate-800">{headerNode}</h2>
-                        <p className="text-slate-600">Masuk untuk mengakses layanan digital Kabupaten Naiera</p>
+                        <div className="flex items-start gap-4">
+                            <div className="flex size-11 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white shadow-xs">
+                                <ShieldCheck className="size-5 text-red-600" />
+                            </div>
+                            <div>
+                                <h3 className="mb-0.5 text-sm font-semibold text-slate-900">
+                                    Jaringan Integrasi Aman
+                                </h3>
+                                <p className="text-sm text-slate-500">
+                                    Autentikasi identitas digital terenkripsi yang menjamin keamanan akses dan perlindungan data pengguna.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="flex items-start gap-4">
+                            <div className="flex size-11 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white shadow-xs">
+                                <Zap className="size-5 text-red-600" />
+                            </div>
+                            <div>
+                                <h3 className="mb-0.5 text-sm font-semibold text-slate-900">
+                                    Navigasi Cepat 24/7
+                                </h3>
+                                <p className="text-sm text-slate-500">
+                                    Kemudahan beralih antar aplikasi layanan pemerintahan tanpa perlu memasukkan kata sandi berulang kali.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Floating Card Mockup Preview (Bottom Right) */}
+                <div
+                    aria-hidden
+                    className="pointer-events-none absolute right-0 bottom-16 hidden w-[370px] translate-x-1/4 rotate-[-3deg] flex-col gap-3.5 rounded-2xl border border-slate-200 bg-white p-5 shadow-xl lg:flex"
+                >
+                    <div className="flex items-center gap-3">
+                        <img src={logoPngUrl} alt="Logo Pemkab Malang" className="size-10 rounded-xl object-cover" />
+                        <div>
+                            <h4 className="text-sm font-bold text-slate-900">Pemerintah Kabupaten Malang</h4>
+                            <p className="text-xs text-slate-500">SIJI - Single Identity Jaringan Integrasi</p>
+                        </div>
+                    </div>
+                    <div className="h-2 w-full overflow-hidden rounded-full bg-red-100">
+                        <div className="h-full w-4/5 rounded-full bg-red-600" />
+                    </div>
+                    <div className="flex items-center justify-between text-xs text-slate-600">
+                        <span>Layanan SSO Terpadu</span>
+                        <span className="font-semibold text-red-600">Akses Terverifikasi</span>
+                    </div>
+                </div>
+            </div>
+
+            {/* Sisi Kanan: Form Authentication Container */}
+            <div className="relative flex min-h-screen w-full min-w-0 flex-col justify-center overflow-hidden px-6 py-12 sm:px-8 sm:py-14 lg:w-full">
+                {/* Back to Home Button */}
+                <Button
+                    asChild
+                    className="absolute top-5 left-4 sm:top-7 sm:left-5"
+                    variant="ghost"
+                    size="sm"
+                >
+                    <a href={backUrl}>
+                        <ChevronLeft className="size-4" />
+                        <span>Kembali ke Beranda</span>
+                    </a>
+                </Button>
+
+                <div className="mx-auto w-full max-w-md space-y-6 sm:space-y-7">
+                    {/* Circle Badge Icon & Title */}
+                    <div className="space-y-3 text-center">
+                        <div className="flex w-full justify-center">
+                            <div className="flex size-14 items-center justify-center rounded-2xl bg-red-600 text-white shadow-lg shadow-red-600/25">
+                                <img src={logoPngUrl} alt="SIJI Logo" className="size-8 object-contain" />
+                            </div>
+                        </div>
+                        <div className="space-y-1">
+                            <h1 className="text-2xl font-bold tracking-tight text-slate-900">
+                                {headerNode}
+                            </h1>
+                            <p className="text-sm text-slate-500">
+                                Masuk ke SIJI - Pemkab Malang untuk mengakses seluruh layanan
+                            </p>
+                        </div>
                     </div>
 
-                    {/* Messages / Alerts */}
+                    {/* Messages & Error Notifications */}
                     {displayMessage && message !== undefined && (message?.type !== "warning" || !isAppInitiatedAction) && (
                         <div
-                            className={clsx("mb-4 rounded-md p-4 text-sm", {
-                                "bg-red-50 text-red-600": message?.type === "error",
-                                "bg-emerald-50 text-emerald-600": message?.type === "success",
-                                "bg-yellow-50 text-yellow-600": message?.type === "warning",
-                                "bg-blue-50 text-blue-600": message?.type === "info"
+                            className={clsx("rounded-xl p-4 text-sm font-medium border shadow-xs", {
+                                "bg-red-50 text-red-700 border-red-200": message?.type === "error",
+                                "bg-emerald-50 text-emerald-700 border-emerald-200": message?.type === "success",
+                                "bg-amber-50 text-amber-700 border-amber-200": message?.type === "warning",
+                                "bg-blue-50 text-blue-700 border-blue-200": message?.type === "info"
                             })}
                         >
                             <span dangerouslySetInnerHTML={{ __html: kcSanitize(message?.summary ?? "") }} />
                         </div>
                     )}
 
-                    {/* Form Content (Children) */}
-                    <div className="space-y-5">{children}</div>
+                    {/* Main Form Content (Children) */}
+                    <div>{children}</div>
 
-                    {/* Social Providers */}
+                    {/* Social Login Providers */}
                     {socialProvidersNode}
 
-                    {/* Footer / Info / Register */}
+                    {/* Footer Extra Links / Info */}
                     {(displayInfo || (auth !== undefined && auth?.showTryAnotherWayLink)) && (
-                        <div className="mt-8 text-center">
+                        <div className="mt-6 text-center">
                             {auth !== undefined && auth?.showTryAnotherWayLink && (
                                 <form id="kc-select-try-another-way-form" action={url.loginAction} method="post" className="mb-4">
                                     <input type="hidden" name="tryAnotherWay" value="on" />
@@ -116,7 +241,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                                             document.forms["kc-select-try-another-way-form" as never].requestSubmit();
                                             return false;
                                         }}
-                                        className="text-sm font-medium text-emerald-600 hover:text-emerald-700 hover:underline"
+                                        className="text-sm font-medium text-red-600 hover:text-red-700 hover:underline"
                                     >
                                         {msg("doTryAnotherWay")}
                                     </a>
@@ -124,47 +249,14 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                             )}
 
                             {displayInfo && (
-                                <p className="text-slate-600">
+                                <div className="text-sm text-slate-600">
                                     {infoNode}
-                                </p>
+                                </div>
                             )}
                         </div>
-                    )} 
+                    )}
                 </div>
             </div>
-
-            {/* Right Side - Image/Info */}
-            <div className="flex-col justify-center bg-muted bg-gradient-to-br from-emerald-600 via-emerald-700 to-blue-700 px-12 max-lg:hidden flex">
-                <div className="absolute inset-0 opacity-10 pointer-events-none">
-                    <div className="absolute top-20 left-20 h-96 w-96 rounded-full bg-white blur-3xl" />
-                    <div className="absolute right-20 bottom-20 h-96 w-96 rounded-full bg-white blur-3xl" />
-                </div>
-
-                <div className="relative z-10 max-w-lg text-white">
-                    <h2 className="mb-6 text-4xl font-bold">Akses Semua Layanan dalam Satu Aplikasi</h2>
-                    <p className="mb-8 text-xl leading-relaxed text-emerald-50">
-                        Lebih dari 100+ layanan pemerintahan Kabupaten Naiera siap melayani Anda 24/7 dengan cepat, mudah, dan aman.
-                    </p>
-
-                    <div className="space-y-4">
-                        {[
-                            "✓ E-KTP, KK, dan layanan kependudukan",
-                            "✓ Pembayaran pajak dan retribusi online",
-                            "✓ Perizinan usaha dan IMB",
-                            "✓ Layanan kesehatan dan pendidikan"
-                        ].map((item, i) => (
-                            <div key={i} className="flex items-center gap-3 text-lg text-emerald-50">
-                                {item}
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="mt-12 rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-sm">
-                        <p className="mb-2 text-sm text-emerald-100">Dipercaya oleh</p>
-                        <p className="text-3xl font-bold">50.000+ Pengguna</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </main>
     );
 }

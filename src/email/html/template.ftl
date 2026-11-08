@@ -15,7 +15,7 @@
     width="100%"
     cellpadding="0"
     cellspacing="0"
-    style="background-color:#f0fdf4; padding:40px 0; font-family:'Segoe UI', Arial, sans-serif; color:#334155;"
+    style="background-color:#fef2f2; padding:40px 0; font-family:'Segoe UI', Arial, sans-serif; color:#334155;"
   >
     <tr>
       <td align="center">
@@ -27,19 +27,19 @@
           style="background-color:#ffffff; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.05); overflow:hidden;"
         >
           <!-- Header -->
-          <tr style="background: linear-gradient(135deg, #059669 0%, #0d9488 50%, #0284c7 100%);">
+          <tr style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%);">
             <td align="center" style="padding:24px;">
               <img
-                alt="Logo Super App Naiera"
-                title="Super App Naiera"
-                src="${url.resourcesUrl}/naiera.png"
+                alt="Logo SIJI Pemkab Malang"
+                title="SIJI - Single Identity Jaringan Integrasi"
+                src="${url.resourcesUrl}/siji.png"
                 height="75"
                 style="display:block;"
               />
               <h1 style="color:#ffffff; font-size:24px; margin:16px 0 0; font-family:'Segoe UI', Arial, sans-serif; text-align:center; font-weight:700;">
-                Super App Naiera
+                SIJI
               </h1>
-              <p style="color:#d1fae5; font-size:14px; margin:8px 0 0; text-align:center;">Kabupaten Naiera</p>
+              <p style="color:#fecaca; font-size:14px; margin:8px 0 0; text-align:center;">Single Identity Jaringan Integrasi - Pemerintah Kabupaten Malang</p>
             </td>
           </tr>
 
@@ -56,7 +56,7 @@
           <tr>
             <td style="padding:24px 40px; font-size:14px; color:#777777; border-top:1px solid #eeeeee;">
               <p style="margin:0; line-height:1.6;">
-                Email ini dikirim secara otomatis oleh sistem Super App Naiera.
+                Email ini dikirim secara otomatis oleh sistem SIJI - Pemerintah Kabupaten Malang.
                 Jika Anda tidak merasa melakukan tindakan terkait, silakan abaikan email ini.
               </p>
             </td>
@@ -68,10 +68,10 @@
           <tr>
             <td style="padding:8px 40px; font-size:12px; color:#999999; text-align:left;">
               <p style="margin:4px 0;">
-                © ${.now?string("yyyy")} Super App Naiera - Kabupaten Naiera
+                © ${.now?string("yyyy")} SIJI - Pemerintah Kabupaten Malang
               </p>
               <p style="margin:4px 0;">
-                Bantuan: <a href="mailto:support@naiera.go.id" style="color:#059669; text-decoration:none; font-weight:500;">support@naiera.go.id</a>
+                Bantuan: <a href="mailto:support@malangkab.go.id" style="color:#dc2626; text-decoration:none; font-weight:500;">support@malangkab.go.id</a>
               </p>
             </td>
           </tr>
